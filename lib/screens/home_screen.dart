@@ -105,15 +105,19 @@ class NewWidget extends StatelessWidget {
                                      imageRefVar: imageList[index],
                                     )));
                       },
-                        // child: CachedNetworkImage(
-                        //   imageUrl: imageList[index].url,
-                        //   placeholder: (context,url) => CircularProgressIndicator(),
-                        //
-                        // ),
-                      child: imageList[index].url != null ? Image.network(imageList[index].url ,
-                        fit: BoxFit.cover, height: 100,width: 100,):
-                           Image.asset("assets\images\load.gif")
+                        child: CachedNetworkImage(
+                          imageUrl: imageList[index].url,
+                          fit: BoxFit.cover,
+                          placeholder: (context,url) =>
+                         Transform.scale(
+                              scale: 0.2,
+                                child: CircularProgressIndicator()),
 
+                          errorWidget: (context,url,error) => Icon(Icons.error_outline)
+                        ),
+                      // child: imageList[index].url != null ? Image.network(imageList[index].url ,
+                      //   fit: BoxFit.cover, height: 100,width: 100,):
+                      //      Image.asset("assets\images\load.gif")
 
                     ),
                   )
@@ -122,4 +126,6 @@ class NewWidget extends StatelessWidget {
         )
     );
   }
+
 }
+

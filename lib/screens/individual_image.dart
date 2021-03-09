@@ -1,6 +1,9 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meme_grid/models/image_model.dart';
+import 'package:pinch_zoom_image_updated/pinch_zoom_image_updated.dart';
+
 
 class IndividualImage extends StatefulWidget {
   IndividualImage({this.imageRefVar });
@@ -29,17 +32,31 @@ class _IndividualImageState extends State<IndividualImage> {
 
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-        Container(
-        height: MediaQuery.of(context).size.height * 0.8,
-        width: double.infinity,
-        child: Image.network(widget.imageRefVar.url),
-        )
-          ],
+      body:  Center(
+          child: Container(
+            margin: EdgeInsets.only(bottom: 150),
+            child: PinchZoomImage(
+              image: Image.network(widget.imageRefVar.url),
+            ),
+          ),
         ),
-      ),
+        // child: Container(
+        //      margin: EdgeInsets.symmetric(vertical: 100),
+        //     alignment: Alignment.center,
+        //     child: Center(
+        //       child: InteractiveViewer(
+        //         panEnabled: false,
+        //
+        //         child: Image.network(
+        //           widget.imageRefVar.url,
+        //
+        //           fit: BoxFit.fill,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+
+
     );
   }
 }
